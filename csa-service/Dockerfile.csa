@@ -1,0 +1,8 @@
+FROM anapsix/alpine-java:latest
+MAINTAINER ibm.com
+RUN apk --no-cache add netcat-openbsd
+COPY csa.jar .
+COPY csa-entrypoint.sh .
+RUN chmod +x csa-entrypoint.sh
+ENTRYPOINT ["sh","csa-entrypoint.sh"]
+EXPOSE 8085

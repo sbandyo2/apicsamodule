@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	
+	<!-- unique transaction number of the upstream application  -->
+	<UniqueTransactionNumber>F22345</UniqueTransactionNumber>
+	<RequisitionName>China Request _Ariba Testing1(F239LY)</RequisitionName>
+	<CompanyCode>0684</CompanyCode>
+	<RequesterName>OneCN Requester</RequesterName>
+	<CommentToSupplier>Comments to suppliers * Contracts: None</CommentToSupplier>
+	<PreparerWebId>chinareq1@c25a0161.toronto.ca.ibm.com</PreparerWebId>
+	<RequesterWebId>chinareq1@c25a0161.toronto.ca.ibm.com</RequesterWebId>
+	
+	<!-- This will contain the Line item details  -->
+	<LineItems>
+		<ItemDetails>
+			<unspsc_cd>81111600</unspsc_cd>
+			<lineitemDescription>Milestone name1~Description of milestone1</lineitemDescription>
+			<lineItemAmount>20.000</lineItemAmount>
+			<lineItemCurrCd>CNY</lineItemCurrCd>
+			<supplierpartNumber>F239LY000001</supplierpartNumber>
+			<lineItemUom>DAY</lineItemUom>
+			<splitPercentage>100</splitPercentage>
+			<lineItemQty>3</lineItemQty> <!-- accepts 3.000  -->
+			<lineItemSeqNo>1</lineItemSeqNo>
+			<!-- <lineItemComment></lineItemComment> --> <!-- optional -->
+			<lineitemNeedByDate>2021-01-02T00:00:00</lineitemNeedByDate>
+			<originatingSystemLineItemNumber>001</originatingSystemLineItemNumber>
+			<lineitemSupplierId>1000301665</lineitemSupplierId> <!--  Please note your supplier Id exist in ierp otherwise transaction will fail -->
+			<lineitemContractNo></lineitemContractNo>
+			<lineitemByPassFlag>B</lineitemByPassFlag>
+			<lineitemSourceCode>E</lineitemSourceCode>
+			<valueOrder>false</valueOrder> <!-- optional : accepts true and false based on UOM value -->
+			<startDate>2021-01-02T00:00:00</startDate>
+			<endDate>2022-01-02T00:00:00</endDate>
+			
+			<!-- Accounting details -->
+			<!-- <costCentre></costCentre>
+			<wbsElement></wbsElement> -->
+		</ItemDetails>
+		
+		<ItemDetails>
+			<unspsc_cd>90000000TS</unspsc_cd>
+			<lineitemDescription>Milestone name1~Description of milestone1</lineitemDescription>
+			<lineItemAmount>80.000</lineItemAmount>
+			<lineItemCurrCd>CNY</lineItemCurrCd>
+			<supplierpartNumber>F239LY000002</supplierpartNumber>
+			<lineItemUom>DAY</lineItemUom>
+			<splitPercentage>100</splitPercentage>
+			<lineItemQty>1</lineItemQty> <!-- accepts 3.000  -->
+			<lineItemSeqNo>2</lineItemSeqNo>
+			<!-- <lineItemComment></lineItemComment> --> <!-- optional -->
+			<lineitemNeedByDate>2021-01-02T00:00:00</lineitemNeedByDate>
+			<originatingSystemLineItemNumber>002</originatingSystemLineItemNumber>
+			<lineitemSupplierId>1000301665</lineitemSupplierId> <!--  Please note your supplier Id exist in ierp otherwise transaction will fail -->
+			<lineitemContractNo></lineitemContractNo>
+			<lineitemByPassFlag>B</lineitemByPassFlag>
+			<lineitemSourceCode>E</lineitemSourceCode>
+			<valueOrder>true</valueOrder> <!-- optional : accepts true and false based on UOM value -->
+			<startDate>2021-01-02T00:00:00</startDate>
+			<endDate>2022-01-02T00:00:00</endDate>
+			
+			<!-- Accounting details -->
+			<!-- <costCentre></costCentre>
+			<wbsElement></wbsElement> -->
+		</ItemDetails>
+	</LineItems>
+
+</Request>
