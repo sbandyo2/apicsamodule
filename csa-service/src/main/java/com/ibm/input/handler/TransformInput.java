@@ -103,8 +103,7 @@ public class TransformInput {
 			String elementname = null;
 			requisitionDTO = new RequisitionDTO();
 			
-			//set the application type
-			requisitionDTO.setApplicationType(CSAServiceConstants.APP_TYPE);
+			
 			
 			for (int i = 0; i < children.getLength(); i++) {
 				childNode = children.item(i);
@@ -115,6 +114,12 @@ public class TransformInput {
 					elementname = childNode.getNodeName();
 
 					if(UNIQUE_TRANSACTION_NUMBER.equalsIgnoreCase(elementname)){
+						if(elemVal!=null && elemVal.startsWith(CSAServiceConstants.F)){
+							//set the application type
+							requisitionDTO.setApplicationType(CSAServiceConstants.APP_TYPE_FP);
+						}else
+							//set the application type
+							requisitionDTO.setApplicationType(CSAServiceConstants.APP_TYPE_TM);
 						requisitionDTO.setApplicationTransactionNumber(elemVal);
 					}
 					else if(REQUISITION_NAME.equalsIgnoreCase(elementname)){
