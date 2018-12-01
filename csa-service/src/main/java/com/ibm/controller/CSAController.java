@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.ibm.bean.RequisitionDTO;
+import com.ibm.bean.VOWrapperDTO;
 import com.ibm.input.handler.TransformInput;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
@@ -21,6 +23,9 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 public class CSAController {
 	
 	Logger logger = LoggerFactory.getLogger(CSAController.class);
+	
+	private static final String RECIEVED = "RECIEVEDDATA";
+	private static final String XML = ".xml";
 	
 	@Autowired
 	private RestTemplate restTemplate;
@@ -67,20 +72,37 @@ public class CSAController {
 	 * @return
 	 */
 	private String invokeAribaService(String recievedData) {
+		
 		InstanceInfo instanceInfo = null;
 		String url = null;
 		String response = null;
+		Application bakendApplication = null;
 		Application aribaApplication = null;
 		TransformInput transformInput = null;
+		VOWrapperDTO voWrapperDTO = null;
+		RequisitionDTO  requisitionDTO = null;
 		
 		transformInput = new TransformInput();
+		requisitionDTO = transformInput.transformInput(recievedData);
+		
+		//perform transaction transform and update in Ariba service 
+		bakendApplication = eurekaClient.getApplication("backend-service");
+		instanceInfo = bakendApplication.getInstances().get(0);
+		url= "http://" + instanceInfo.getIPAddr() + ":"+ instanceInfo.getPort() + "/" + "/dbattachinsert/";
+		
+		//saving the received data
+		voWrapperDTO = new VOWrapperDTO();
+		voWrapperDTO.setRecievedData(new StringBuffer(recievedData));
+		voWrapperDTO.setFileName(requisitionDTO.getApplicationType()+"_"+requisitionDTO.getApplicationTransactionNumber()+"_"+RECIEVED);
+		voWrapperDTO.setFileType(XML);
+		restTemplate.postForObject(url, voWrapperDTO, String.class);
 		
 		//perform transaction transform and update in Ariba service 
 		aribaApplication = eurekaClient.getApplication("sapariba-service");
 		instanceInfo = aribaApplication.getInstances().get(0);
 		url = "http://" + instanceInfo.getIPAddr() + ":"+ instanceInfo.getPort() + "/" + "/ariba/";
 		
-		response = restTemplate.postForObject(url, transformInput.transformInput(recievedData), String.class);
+		response = restTemplate.postForObject(url,requisitionDTO , String.class);
 		
 		return response;
 	}
