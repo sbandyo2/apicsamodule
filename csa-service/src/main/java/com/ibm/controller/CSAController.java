@@ -35,8 +35,8 @@ public class CSAController {
 	
 	@HystrixCommand(fallbackMethod="reliable", commandProperties = {
 			@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "20"), //default value , number of request which will trip the circuit
-			@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="25000"),
-            @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "25000") })
+			@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="40000"),
+            @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "40000") })
 	
 	
 	
