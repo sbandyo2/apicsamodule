@@ -1,0 +1,8 @@
+FROM anapsix/alpine-java:latest
+MAINTAINER ibm.com
+RUN apk --no-cache add netcat-openbsd
+COPY csaw2.jar .
+COPY csaw2-entrypoint.sh .
+RUN chmod +x csaw2-entrypoint.sh
+ENTRYPOINT ["sh","csaw2-entrypoint.sh"]
+EXPOSE 7085
