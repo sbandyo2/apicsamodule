@@ -31,8 +31,59 @@ public class LineItemDTO {
 
 	private String costCentre;
 	private String wbsElement;
+	
+	
+	private String manPartNumber;
+	private String shipTo;
+	private String purchaseOrg;
+	
+	
+	
+	
 
 	
+	/**
+	 * @return the manPartNumber
+	 */
+	public String getManPartNumber() {
+		return manPartNumber;
+	}
+
+	/**
+	 * @param manPartNumber the manPartNumber to set
+	 */
+	public void setManPartNumber(String manPartNumber) {
+		this.manPartNumber = manPartNumber;
+	}
+
+	/**
+	 * @return the shipTo
+	 */
+	public String getShipTo() {
+		return shipTo;
+	}
+
+	/**
+	 * @param shipTo the shipTo to set
+	 */
+	public void setShipTo(String shipTo) {
+		this.shipTo = shipTo;
+	}
+
+	/**
+	 * @return the purchaseOrg
+	 */
+	public String getPurchaseOrg() {
+		return purchaseOrg;
+	}
+
+	/**
+	 * @param purchaseOrg the purchaseOrg to set
+	 */
+	public void setPurchaseOrg(String purchaseOrg) {
+		this.purchaseOrg = purchaseOrg;
+	}
+
 	/**
 	 * @return the costCentre
 	 */
